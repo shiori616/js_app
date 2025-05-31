@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const year = today.getFullYear();
     const month = String(today.getMonth() + 1).padStart(2, '0'); // 月は0から始まるため+1
     const day = String(today.getDate()).padStart(2, '0');
-    inputDate.value = `<span class="math-inline">\{year\}\-</span>{month}-${day}`; // YYYY-MM-DD 形式で設定
+    inputDate.value = `${year}-${month}-${day}`; // YYYY-MM-DD 形式で設定
 
     displayMemos(); // ページ読み込み時に保存済みのメモを表示
 });
@@ -77,11 +77,36 @@ function displayMemos() {
         });
 
         memoItem.innerHTML = `
-            <div class="memo-date"><span class="math-inline">\{formattedDate\}</div\>
-<div class\="memo\-text"\></span>{memo.text}</div>
+            <div class="memo-date">${formattedDate}</div>
+            <div class="memo-text">${memo.text}</div>
             <button class="delete-button">X</button>
         `;
 
         // 削除ボタンのイベントリスナーを追加
         const deleteButton = memoItem.querySelector('.delete-button');
-        deleteButton.addEventListener('click
+        deleteButton.addEventListener('click', () => {
+            deleteMemo(memo.id);
+        });
+
+        memoList.appendChild(memoItem);
+    });
+}
+
+// メモを削除する関数
+function deleteMemo(idToDelete) {
+    let memos = JSON.parse(localStorage.getItem('memos')) || [];
+    // 削除対象のID以外のメモをフィルタリング
+    memos = memos.filter(memo => memo.id !== idToDelete);
+    localStorage.setItem('memos', JSON.stringify(memos));
+    displayMemos(); // リストを再表示
+}
+
+// すべてのメモをクリアする関数
+clearButton.addEventListener('click', () => {
+    // confirm("すべてのメモを削除してもよろしいですか？") の代わりにカスタムモーダルを推奨
+    // 簡略化のため、ここでは直接削除
+    if (confirm("Are you sure you want to delete all memos?")) {
+        localStorage.removeItem('memos');
+        displayMemos();
+    }
+});
