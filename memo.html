@@ -1,20 +1,53 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="js/jquery-2.1.3.min.js"></script>
-    <link rel="stylesheet" href="css/reset.css">
-    <link rel="stylesheet" href="css/sample.css">
-    <title>JSアプリ開発</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- JS -->
+	<script src="js/jquery-2.1.3.min.js"></script>
+	<!-- CSS -->
+	<link rel="stylesheet" href="css/reset.css">
+	<link rel="stylesheet" href="css/memo.css">
+	<!-- タイトル -->
+	<title>メモ帳アプリ</title>
 </head>
-<body>
-    <h1>JS app list</h1>
-    <div>
-        <ol>
-            <li>メモ帳アプリコピー版</li>
-        </ol>
-    </div>
 
+<body>
+	<!-- ヘッダー -->
+	 <div class="header">
+		<h1>メモ帳アプリ</h1>
+	 </div>
+	
+	<!-- インプットエリア -->
+	 <div id="input-area">
+		<!-- 日付 -->
+		<div id="date">
+			<label for="input-date">Date:</label>
+			<input type="date" id="input-date">
+		</div>
+
+		<!-- コンテンツ -->
+		 <div id="content">
+			<label for="memo-text" id="content-title">内容:</label>
+			<textarea name="" id="memo-text" placeholder="メモを入力"></textarea>
+		 </div>
+	 </div>
+
+	<!-- ボタンエリア -->
+	 <div id="button-area">
+		<button id="save-button" class="action-button">Save</button>
+		<button id="clear-button" class="action-button clear">Clear</button>
+	 </div>
+
+	<!-- メモ表示エリア -->
+	 <div id="memo-list-area">
+		<h2>過去のメモ</h2>
+		<div id="memo-list">
+			<p style="text-align: center; color: #888;">メモなし</p>
+		</div>
+	 </div>
+	 
+	 <script src="js/memo.js"></script>
 </body>
+
 </html>
