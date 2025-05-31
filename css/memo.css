@@ -1,23 +1,28 @@
-基本構造
+/* bodyの基本的なスタイルと中央配置 */
 body {
     margin: 0;
     padding: 0;
+    /* 画面の高さいっぱいに広げる */
+    min-height: 100vh;
     font-family: 'メイリオ', 'Meiryo', sans-serif;
-    background-color: #f4f7f6; /* 背景色 */
-    display: flex; /* Flexboxを使ってbody内のコンテンツを中央に配置 */
-    flex-direction: column;
-    align-items: center; /* 水平方向中央揃え */
+    background-color: #f4f7f6; /* 背景色を追加 */
+
+    /* Flexboxを使ってbody内のコンテンツを中央に配置 */
+    display: flex;
+    flex-direction: column; /* 子要素を縦に並べる */
+    align-items: center; /* 水平方向の中央揃え */
+    justify-content: center; /* 垂直方向の中央揃え */
 }
 
-/* ヘッダースタイル */
+/* ヘッダーのスタイル */
 .header {
     background-color: #2d8fdd;
     color: white;
     padding: 15px 0;
     width: 100%; /* 幅を画面いっぱいに */
     text-align: center;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    margin-bottom: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px; /* input-areaとの間に余白 */
 }
 
 .header h1 {
@@ -26,101 +31,151 @@ body {
 }
 
 /* 入力エリア全体のスタイル */
-#input-area{
+#input-area {
     background-color: white;
     padding: 30px;
-    border-radius: 8px; /* 角を丸くする */
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-    width: 90%;
-    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    width: 90%; /* 幅を調整 */
+    max-width: 500px; /* 最大幅を設定 */
+
+    /* Flexboxを使って内部のdivを縦に配列し、間隔を調整 */
+    display: flex;
+    flex-direction: column; /* 子要素（#date, #content）を縦に配列★ */
+    gap: 20px; /* 子要素間の隙間 */
+    margin-bottom: 20px; /* ボタンエリアとの間に余白 */
 }
 
-    /* 日付入力エリア */
-    #date {
-        /* text-align: center; */
-        margin-bottom: 10px;
-    }
+/* 日付入力欄のスタイル */
+#date {
+    text-align: center; /* 日付入力欄を中央に */
+}
 
-    #input-date {
-        /* width: calc(100% - 20px); */
-        padding: 10px;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-        font-size: 1em;
-    }
+#input-date {
+    width: calc(100% - 20px); /* 親要素の幅からpadding分を引く */
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1em;
+}
 
-    /* コンテンツエリア */
-    #content {
-    }
+/* テキストエリアのスタイル */
+#content {
+    text-align: center; /* この要素内のテキストを中央に配置 */
+}
 
-    #content-title{
-    }
-
-    textarea {
-        width: calc(100% - 20px);
-        height: 150px;
-        margin: 10px;
-        padding: 10px;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-        font-size: 1em;
-        resize: vertical;
-    }
+textarea {
+    width: calc(100% - 20px); /* 親要素の幅からpadding分を引く */
+    height: 150px; /* 高さ */
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1em;
+    resize: vertical; /* 垂直方向のみリサイズ可能にする */
+}
 
 /* ボタンエリアのスタイル */
 #button-area {
     display: flex;
     justify-content: center;
     gap: 15px; /* ボタン間の隙間 */
-    margin-bottom: 30px;
-
+    margin-bottom: 30px; /* メモ表示エリアとの間に余白 */
 }
 
-    /* ボタンスタイル */
-    .action-button {
-        background-color: #2d8fdd;
-        color: white;
-        border: none;
-        padding: 12px 25px;
-        border-radius: 5px;
-        font-size: 1em;
-        cursor: pointer;
-        transition: background-color 0.3s ease;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    }
+.action-button {
+    background-color: #2d8fdd;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 5px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
 
-    .action-button:hover {
-        background-color: #247bbd;
-    }
+.action-button:hover {
+    background-color: #247bbd;
+}
 
-    .action-button.clear {
-        background-color: #f44336;
-    }
+.action-button.clear {
+    background-color: #f44336; /* 赤色 */
+}
 
-    .action-button.clear:hover {
-        background-color: #d32f2f;
-    }
-
+.action-button.clear:hover {
+    background-color: #d32f2f;
+}
 
 /* メモ表示エリアのスタイル */
 #memo-list-area {
     background-color: white;
     padding: 30px;
     border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
     width: 90%;
-    max-width: 90vh;
-    min-height: 100px;
-    border-top: 5px solid #2d8fdd;
+    max-width: 500px;
+    min-height: 100px; /* 最低限の高さ */
+    border-top: 5px solid #2d8fdd; /* 上部にアクセントライン */
 }
 
-    /* h2のスタイル */
-    #memo-list-area h2 {
-        text-align: center;
-        color: #333;
-        margin-top: 0;
-        margin-bottom: 20px;
-        font-size: 1.5em;
-        border-bottom: 1px solid #eee;
-        padding-bottom: 10px;
-    }
+#memo-list-area h2 {
+    text-align: center;
+    color: #333;
+    margin-top: 0;
+    margin-bottom: 20px;
+    font-size: 1.5em;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+}
+
+.memo-item {
+    background-color: #f9f9f9;
+    border: 1px solid #eee;
+    border-left: 5px solid #2d8fdd; /* 左側に青い線 */
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    position: relative; /* 削除ボタンの基準 */
+}
+
+.memo-item:last-child {
+    margin-bottom: 0;
+}
+
+.memo-date {
+    font-size: 0.9em;
+    color: #666;
+    font-weight: bold;
+}
+
+.memo-text {
+    font-size: 1em;
+    color: #333;
+    white-space: pre-wrap; /* 改行を保持 */
+    word-break: break-word; /* 長い単語の折り返し */
+}
+
+.delete-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: #ff5252;
+    color: white;
+    border: none;
+    border-radius: 50%; /* 丸いボタン */
+    width: 25px;
+    height: 25px;
+    font-size: 0.8em;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease;
+}
+
+.delete-button:hover {
+    background-color: #e00000;
+}
