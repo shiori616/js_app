@@ -1,0 +1,32 @@
+body {
+    margin: 0;
+    padding: 0;
+    /* 画面の高さいっぱいに広げる */
+    min-height: 100vh;
+    font-family: 'メイリオ', 'Meiryo', sans-serif;
+    background-color: #f4f7f6;
+    /* Flexboxを使ってbody内のコンテンツを中央に配置 */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* ヘッダーのスタイル */
+.header {
+    background-color: #2d8fdd;
+    color: white;
+    padding: 15px 0;
+    width: 100%;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+    /* ヘッダーのテキスト */
+    .header h1 {
+        margin: 0;
+        font-size: 1.8em;
+    }
+
+
+
