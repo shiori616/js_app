@@ -1,32 +1,186 @@
+/* style.css */
+
+/* 全体のボディスタイル */
 body {
-    margin: 0;
+    font-family: 'Inter', sans-serif;
+    background-color: #f3f4f6; /* bg-gray-100 */
+    min-height: 100vh; /* min-h-screen */
+    display: flex; /* flex */
+    align-items: center; /* items-center */
+    justify-content: center; /* justify-center */
+    padding: 1rem; /* p-4 */
+}
+
+/* メインコンテナのスタイル */
+.bg-white {
+    background-color: #ffffff; /* bg-white */
+    padding: 2rem; /* p-8 */
+    border-radius: 1rem; /* rounded-2xl */
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1); /* shadow-xl */
+    width: 100%; /* w-full */
+    max-width: 28rem; /* max-w-md */
+}
+
+/* h1 タイトルのスタイル */
+h1 {
+    font-size: 2.25rem; /* text-4xl */
+    font-weight: 700; /* font-bold */
+    text-align: center; /* text-center */
+    color: #1f2937; /* text-gray-800 */
+    margin-bottom: 2rem; /* mb-8 */
+}
+
+/* input-area クラスのスタイル */
+.input-area {
+    display: flex; /* flex */
+    flex-direction: column; /* flex-col */
+    gap: 1rem; /* gap-4 (Tailwindのデフォルトスケール: 1rem = 16px) */
+    margin-bottom: 2rem; /* mb-8 (Tailwindのデフォルトスケール: 2rem = 32px) */
+}
+
+/* sr-only クラスのスタイル (スクリーンリーダー専用) */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
     padding: 0;
-    /* 画面の高さいっぱいに広げる */
-    min-height: 100vh;
-    font-family: 'メイリオ', 'Meiryo', sans-serif;
-    background-color: #f4f7f6;
-    /* Flexboxを使ってbody内のコンテンツを中央に配置 */
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
+
+/* input と select 要素の共通スタイル */
+.input-area input[type="text"],
+.input-area select {
+    padding: 0.75rem; /* p-3 */
+    border-width: 1px; /* border */
+    border-color: #d1d5db; /* border-gray-300 */
+    border-radius: 0.5rem; /* rounded-lg */
+    color: #1f2937; /* text-gray-800 */
+    /* focus:outline-none */
+    outline: 2px solid transparent;
+    outline-offset: 2px;
+    /* focus:ring-2 focus:ring-blue-400 */
+    box-shadow: 0 0 0 2px transparent; /* デフォルトのリングシャドウを透明に */
+    transition: box-shadow 0.2s ease-in-out; /* フォーカス時のアニメーション */
+}
+
+.input-area input[type="text"]:focus,
+.input-area select:focus {
+    outline: none; /* デフォルトのアウトラインを削除 */
+    box-shadow: 0 0 0 2px #60a5fa; /* フォーカス時のリングシャドウ (blue-400) */
+}
+
+.input-area select {
+    background-color: #fff; /* bg-white */
+}
+
+/* ボタンのスタイル */
+.input-area button {
+    background-color: #2563eb; /* bg-blue-600 */
+    color: #fff; /* text-white */
+    font-weight: 600; /* font-semibold */
+    padding-top: 0.75rem; /* py-3 */
+    padding-bottom: 0.75rem; /* py-3 */
+    padding-left: 1.5rem; /* px-6 */
+    padding-right: 1.5rem; /* px-6 */
+    border-radius: 0.5rem; /* rounded-lg */
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); /* shadow-md */
+    transition-property: all; /* transition */
+    transition-duration: 300ms; /* duration-300 */
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1); /* ease-in-out */
+    transform: scale(1); /* transform (初期状態) */
+}
+
+/* ボタンのホバー時のスタイル */
+.input-area button:hover {
+    background-color: #1d4ed8; /* hover:bg-blue-700 */
+    transform: scale(1.05); /* hover:scale-105 */
+}
+
+/* 買い物リストアイテムの基本スタイル */
+.shopping-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
+    background-color: #f9fafb; /* 薄いグレーの背景 */
+    border-radius: 0.75rem; /* 角丸 */
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); /* 控えめな影 */
+    transition: all 0.2s ease-in-out;
+}
+
+.shopping-item:hover {
+    transform: translateY(-2px); /* ホバー時に少し浮き上がる */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* ホバー時に影を強調 */
+}
+
+/* アイテム情報（買うもの、買う場所） */
+.item-info {
+    flex-grow: 1;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
 }
 
-/* ヘッダーのスタイル */
-.header {
-    background-color: #2d8fdd;
-    color: white;
-    padding: 15px 0;
-    width: 100%;
-    text-align: center;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    margin-bottom: 20px;
+.item-name {
+    font-size: 1.125rem; /* 大きめのテキスト */
+    color: #374151; /* 濃いグレーのテキスト */
 }
-    /* ヘッダーのテキスト */
-    .header h1 {
-        margin: 0;
-        font-size: 1.8em;
+
+.item-place {
+    font-size: 0.875rem; /* 小さめのテキスト */
+    color: #6b7280; /* 中間的なグレーのテキスト */
+    margin-top: 0.25rem; /* 上に少しマージン */
+}
+
+/* アクションボタン（削除など） */
+.item-actions {
+    display: flex;
+    gap: 0.75rem; /* ボタン間の間隔 */
+}
+
+.action-button {
+    padding: 0.5rem 0.75rem;
+    border-radius: 0.5rem;
+    font-weight: 500;
+    transition: all 0.2s ease-in-out;
+    cursor: pointer;
+    white-space: nowrap; /* ボタン内のテキストが改行されないように */
+}
+
+.action-button.delete-item {
+    background-color: #ef4444; /* 赤色 */
+    color: white;
+}
+
+.action-button.delete-item:hover {
+    background-color: #dc2626; /* ホバーで少し暗い赤色 */
+    transform: scale(1.05);
+}
+
+/* リストアイテムのスペース */
+.space-y-4 > *:not([hidden]) ~ *:not([hidden]) {
+    margin-top: 1rem; /* Tailwindのspace-y-4に相当 */
+}
+
+
+/* レスポンシブ対応 */
+@media (max-width: 640px) {
+    .shopping-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
     }
 
+    .item-actions {
+        width: 100%;
+        justify-content: flex-end;
+    }
 
-
+    .action-button {
+        flex-grow: 1;
+        text-align: center;
+    }
+}
