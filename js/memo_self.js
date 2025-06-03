@@ -89,7 +89,7 @@ function displayMemos() {
 
         // 各メモ表示追加
         memoItem.innerHTML =`
-            <div class="relative flex flex-col items-center justify-center w-full border border-blue-300 rounded-xl">
+            <div class="relative flex flex-col items-center justify-center w-full border border-blue-300 rounded-xl mt-3">
                 <div class="memo-date flex justify-center border-b border-gray-300">${formattedDate}</div>
                 <div class="memo-text">${memo.text}</div>
                 <button class="delete-button absolute top-[-8px] right-[-8px] bg-red-200 rounded-full px-2">✗</button>
