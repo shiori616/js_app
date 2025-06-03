@@ -41,7 +41,12 @@
         <div class="flex justify-center mt-3 border-y border-gray-300">
             <h2>過去のメモ</h2>
         </div>
-        <div id="memo-list" class="flex justify-center mt-2">
+        <div id="memo-list" class="flex flex-col items-center justify-center w-full mt-2">
+            <div class="relative flex flex-col items-center justify-center w-4/5 border border-blue-300 rounded-xl">
+                <div class="memo-date flex justify-center w-full border-b border-gray-300">${formattedDate}</div>
+                <div class="memo-text">${memo.text}</div>
+                <button class="delete-button absolute top-[-8px] right-[-8px] bg-red-200 rounded-full px-2">✗</button>
+            </div>
         </div>
      </div>
 

@@ -63,7 +63,7 @@ saveButton.addEventListener('click', () => {
 
 // 保存されたメモを表示する関数
 function displayMemos() {
-    memoList.innerHTML= '';　// クリア
+    //memoList.innerHTML= '';　// クリア
 
     let memos = JSON.parse(localStorage.getItem('memos')) || [];
 
@@ -76,22 +76,24 @@ function displayMemos() {
     memos.sort((a,b) => new Date(b.date) - new Date(a.date));
 
     memos.forEach(memo =>{ // memosの要素をmemoとして一つ一つ書き出し
-        const memoItem = document.createElement('div'): // memo事に一つ一つdivを作成
-        memoItem.classList.add('memo-item'); // divについて、cssClass作成
+        const memoItem = document.createElement('div'); // memo事に一つ一つdivを作成
+        // memoItem.classList.add('memo-item'); // divについて、cssClass作成
         memoItem.dataset.id = memo.id; // 削除用にIDをデータ属性に保存
 
         // 日付をyyyy/mm/dd形式にフォーマット
         const dateObj = new Date(memo.date);
         const year = dateObj.getFullYear();
         const month = String(dateObj.getMonth() + 1).padStart(2,'0');
-        const day = StaticRange(dataset.getDate()).padStart(2,'0');
+        const day = String(dateObj.getDate()).padStart(2,'0');
         const formattedDate = `${year}/${month}/${day}`;
 
         // 各メモ表示追加
         memoItem.innerHTML =`
-            <div class="memo-date">${formattedDate}</div>
-            <div class="memo-text">${memo.text}</div>
-            <button class="delete-button">X</button>
+            <div class="relative flex flex-col items-center justify-center w-full border border-blue-300 rounded-xl">
+                <div class="memo-date flex justify-center border-b border-gray-300">${formattedDate}</div>
+                <div class="memo-text">${memo.text}</div>
+                <button class="delete-button absolute top-[-8px] right-[-8px] bg-red-200 rounded-full px-2">✗</button>
+            </div>
             `;
 
         // 削除ボタンのイベントリスナーを追加
